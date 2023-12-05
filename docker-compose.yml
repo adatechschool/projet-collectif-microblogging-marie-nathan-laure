@@ -5,9 +5,6 @@ services:
         entrypoint: []
         extra_hosts:
             - "host.docker.internal:host-gateway"
-        ports:
-            - "${APP_PORT:-8000}:8000"
-            - "${VITE_PORT:-5173}:${VITE_PORT:-5173}"
         environment:
             IGNITION_LOCAL_SITES_PATH: "${PWD}"
         volumes:
