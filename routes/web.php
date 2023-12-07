@@ -29,7 +29,6 @@ Route::get('/profil', function (Request $request) {
     ];
 });
 
-
 Route::get('/profil/{slug}/{id}', function (string $slug, string $id, Request $request) {
     return [
         "slug" => $slug,
