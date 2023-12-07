@@ -9,7 +9,9 @@ class PostController extends Controller
 {
     //
 
-    public function index (): View {
-        return view('feed.index');
+    public function index (): Paginator {
+       return \App\Models\Post::paginate(25);
+       // $posts =  (pour stocker le return du dessus quand on en aura plus besoin)
+        // return view('feed.index');
     }
 }
