@@ -1,6 +1,6 @@
 <x-app-layout>
 <div class="max-w-sm rounded overflow-hidden shadow-lg">
-  <img class="w-full" src=".storage/pictures" alt="chiot dalmatien et fleurs violettes">
+  <img class="w-full" src="" alt="chiot dalmatien et fleurs violettes">
   <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2">Mon petit Chiot</div>
     <p class="text-gray-700 text-base">

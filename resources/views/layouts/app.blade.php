@@ -29,7 +29,13 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                <body>
+                    <div class="cardPost">
+                        @yield('content')
+                    </div>
+                </body>
+
+                {{-- {{ $slot }} --}}
             </main>
         </div>
     </body>
