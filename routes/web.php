@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Route::get('/show-latest-post', [PostController::class, 'showLatestPost']);
 
 Route::get('/', function () {
     return view('welcome');

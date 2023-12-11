@@ -14,10 +14,7 @@ class Post extends Model
     *
     * @var array<int, string>
     */
-   protected $fillable = [
-       'content',
-       'picture',
-   ];
+    protected $fillable = ['title', 'image', 'description', 'user_id', 'created_at'];
    /**
     * Relation avec la table User (un post appartient à un user mais un user peut avoir plusieurs posts)
     */

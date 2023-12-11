@@ -29,13 +29,9 @@
 
             <!-- Page Content -->
             <main>
-                <!-- Où tu veux utiliser le composant, par exemple dans une autre vue -->
-                    <x-card-post title="Mon petit chiot" image="../resources/images/dalmatienPuppy.jpg" description="Peanuts qui joue dans les fleurs" />
-
-                    @yield('content')
-                </div>
                 {{ $slot }}
             </main>
         </div>
+
     </body>
 </html>
