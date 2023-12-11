@@ -30,10 +30,6 @@ Route::get('/profil', function (Request $request) {
     ];
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6b30717 (first view)
 Route::get('/profil/{slug}/{id}', function (string $slug, string $id, Request $request) {
     return [
         "slug" => $slug,
