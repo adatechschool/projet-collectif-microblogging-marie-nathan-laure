@@ -29,12 +29,9 @@
 
             <!-- Page Content -->
             <main>
-                <body>
-                    <div class="cardPost">
-                        @yield('content')
-                    </div>
-                </body>
-
+                <div class="cardPost">
+                    @yield('content')
+                </div>
                 {{ $slot }}
             </main>
         </div>
