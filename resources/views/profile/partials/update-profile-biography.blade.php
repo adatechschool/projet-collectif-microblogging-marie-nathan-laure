@@ -5,11 +5,17 @@
         </h2>
     </header>
 
-    <form>
-        {{-- @TODO nous devons décommenter cette partie du code lorsque la route pour update sera --}}
-    {{-- method="post" action="{{ route('biography.update') }}" class="mt-6 space-y-6"> --}}
-        {{-- @csrf --}}
-        {{-- @method('put') --}}
+    <form method="post" action="{{ route('biography.update') }}" class="mt-6 space-y-6"> 
+        @csrf 
+        @method('put')
+
+        {{-- Cette partie sert à débug, elle affiche l'utilisateur connecté --}}
+        {{-- @auth
+                {{ auth()->user() }}
+            @else
+                Utilisateur non connecté
+        @endauth --}}
+
 
         <div>
             <x-input-label for="biography"/>
