@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\BiographyController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -38,14 +39,16 @@ Route::get('/profil/{slug}/{id}', function (string $slug, string $id, Request $r
     'slug'=> '[a-z0-9\-]+', // ici on indique que l'on autorise: char, chiffres & "-"
 ]) ;
 
-Route::middleware('auth')->group(function () {
+require __DIR__.'/auth.php';
+
+Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::put('update-biography', [BiographyController::class, 'update'])->name('biography.update');
 });
-
-require __DIR__.'/auth.php';
 
 Route::get('/feed', function () {
         return view('feed.index');
 });
+
