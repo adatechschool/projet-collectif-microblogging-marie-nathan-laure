@@ -10,8 +10,6 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    <div class="cardPost">
-        @yield('content')
-    </div>
+    {{ $slot }}
 </body>
 </html>
