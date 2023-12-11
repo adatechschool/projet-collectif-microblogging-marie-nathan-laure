@@ -51,3 +51,4 @@ require __DIR__.'/auth.php';
 Route::get('/feed', function () {
         return view('feed.index');
 });
+
