@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Post;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // indique de créer 10 instances (ensuite lancer la commande php artisan:seed)
+        User::factory(10)
+        ->has(Post::factory()->count(3), 'post') // ici on spécifie de créer 3 post / user en suivant la relation 'post'
+        ->create();
     }
 }
