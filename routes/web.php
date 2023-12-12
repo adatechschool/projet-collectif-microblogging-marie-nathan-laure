@@ -25,7 +25,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/profil', function (Request $request) {
-    return view('profil');
+    $user = auth()->user(); // récupère l'ensemble des données du user
+    $posts =\App\Models\Post::where('user_id',$user['id'])->orderByDesc('created_at')->get();
+    return view('profil', ['profil' => $posts, 'user'=> $user]);
+    // view('profil');
 });
 
 Route::get('/profil/{slug}/{id}', function (string $slug, string $id, Request $request) {

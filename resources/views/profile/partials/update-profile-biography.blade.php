@@ -24,7 +24,7 @@
                 id="biography"
                 name="biography"
                 rows="4"
-                class="mt-1 block w-full border rounded-md shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 dark:bg-gray-900 dark:border-gray-600 dark:focus:border-primary-400 dark:focus:ring-dark"
+                class="mt-1 block w-full border rounded-md shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 dark:bg-gray-900 dark:border-gray-600 dark:focus:border-primary-400 dark:focus:ring-dark dark:text-gray-100"
             >{{ old('biography') }}</textarea>
 
             @error('biography')
