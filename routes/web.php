@@ -29,7 +29,7 @@ Route::get('/profil', function (Request $request) {
     return [
         "name" => $request->input('name', 'Philip philip')
     ];
-});
+})->name('profil');
 
 Route::get('/profil/{slug}/{id}', function (string $slug, string $id, Request $request) {
     return [

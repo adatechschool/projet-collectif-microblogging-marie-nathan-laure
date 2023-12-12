@@ -16,6 +16,11 @@
                         {{ __("Fil d'actualités") }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('profil')" :active="request()->routeIs('profil')">
+                        {{ __("Mon profil") }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -81,7 +86,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Profil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -91,7 +96,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Déconnexion') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
