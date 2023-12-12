@@ -17,6 +17,7 @@ class Post extends Model
    protected $fillable = [
        'content',
        'picture',
+       'user_id',
    ];
    /**
     * Relation avec la table User (un post appartient à un user mais un user peut avoir plusieurs posts)
