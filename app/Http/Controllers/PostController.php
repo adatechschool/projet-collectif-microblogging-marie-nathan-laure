@@ -11,7 +11,11 @@ class PostController extends Controller
     public function showLatestPost()
     {
         $latestPost = Post::latest()->first();
-        return view("dashboard.blade.php")->with('dashboard.blade.php', $latestPost);
+        if($latestPost){
+            return view("dashboard", ['latestPost'=> $latestPost]);
+        } else {
+            return view("dashboard", ['latestPost'=> null]);
+        }
     }
 
     public function index (): Paginator {

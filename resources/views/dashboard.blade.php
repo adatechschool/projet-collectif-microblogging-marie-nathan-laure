@@ -17,14 +17,13 @@
     <!-- Où tu veux utiliser le composant -->
     <div>
         <x-card-post 
-    title="{{ $latestPost->title }}" 
-    image="{{ $latestPost->image }}" 
-    description="{{ $latestPost->description }}" 
-    userId="{{ $latestPost->user_id }}" 
-    createdAt="{{ $latestPost->created_at }}" 
-/>
+            image="{{ $latestPost->image }}" 
+            description="{{ $latestPost->description }}" 
+            userId="{{ $latestPost->user_id }}" 
+            createdAt="{{ $latestPost->created_at }}"/>
+            @yield('content')
+        </x-app-layout>
+    </div>
+
         {{-- <img class="w-full" src="{{ asset($image) }}" alt="{{ $title }}">
  --}}
-        @yield('content')
-    </div>
-</x-app-layout>
