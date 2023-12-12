@@ -8,16 +8,15 @@ use Illuminate\View\Component;
 
 class CardPost extends Component
 {
-    public $title;
+
     public $user_id;
     public $createdAt;
     public $image;
     public $description;
 
-    public function __construct($title, $image, $description, $user_id, $createdAt)
+    public function __construct($image, $description, $user_id, $createdAt)
     {
         $this->user_id = $user_id;
-        $this->title = $title;
         $this->createdAt = $createdAt;
         $this->image = $image;
         $this->description = $description;
