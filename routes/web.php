@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\BiographyController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ Route::get('/profil', function (Request $request) {
     $posts =\App\Models\Post::where('user_id',$user['id'])->orderByDesc('created_at')->get();
     return view('profil', ['profil' => $posts, 'user'=> $user]);
     // view('profil');
-});
+})->name('profil');
 
 Route::get('/profil/{slug}/{id}', function (string $slug, string $id, Request $request) {
     return [
@@ -49,9 +50,13 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::put('update-biography', [BiographyController::class, 'update'])->name('biography.update');
+    Route::get('/post', [PostController::class, 'index']);
+    Route::get('/post/create', [PostController::class, 'create']);
+    Route::post('/post/store', [PostController::class, 'store']);
 });
 
 Route::get('/feed', function () {
         return view('feed.index');
 });
+
 
