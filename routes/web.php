@@ -26,8 +26,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/profil', function (Request $request) {
-    return view('profil');
-});
+    return [
+        "name" => $request->input('name', 'Philip philip')
+    ];
+})->name('profil');
+
 
 Route::get('/profil/{slug}/{id}', function (string $slug, string $id, Request $request) {
     return [
