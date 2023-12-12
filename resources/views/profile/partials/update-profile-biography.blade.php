@@ -7,7 +7,7 @@
 
     <form method="post" action="{{ route('biography.update') }}" class="mt-6 space-y-6"> 
         @csrf 
-        @method('put')
+        @method('put')  
 
         {{-- Cette partie sert à débug, elle affiche l'utilisateur connecté --}}
         {{-- @auth
@@ -21,15 +21,15 @@
             <x-input-label for="biography"/>
 
             <textarea
-                id="biography"
-                name="biography"
-                rows="4"
-                class="mt-1 block w-full border rounded-md shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 dark:bg-gray-900 dark:border-gray-600 dark:focus:border-primary-400 dark:focus:ring-dark"
-            >{{ old('biography') }}</textarea>
+        id="biography"
+        name="biography"
+        rows="4"
+        class="mt-1 block w-full border rounded-md shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 dark:bg-gray-900 dark:border-gray-600 dark:focus:border-primary-400 dark:focus:ring-dark dark:text-gray-100"
+        >{{ auth()->user()->biography }}</textarea>
 
-            @error('biography')
-                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-            @enderror
+        @error('biography')
+            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+        @enderror
         </div>
 
         <div class="flex items-center gap-4 mt-6">
