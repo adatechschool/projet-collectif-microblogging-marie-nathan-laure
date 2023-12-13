@@ -21,7 +21,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ url('/post/store') }}" method="post">
+                    <form action="{{ url('/post/store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
@@ -30,7 +30,14 @@
                                 id="content" name="content" rows="4" required>{{ old('content') }}</textarea>
                         </div>
 
-                        <!-- Autres champs du formulaire -->
+                        <div class="mb-4">
+                            <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                <div>
+                                    <label class="btn inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150" for="image"> Ajouter une image</label>
+                                    <input type="file" name="image" id="image" style="visibility:hidden;"class="mt-1 block w-full">
+                                </div>
+                            </label>
+                        </div>
 
                         <x-primary-button>{{ __('Publier') }}</x-primary-button>
                     </form>
