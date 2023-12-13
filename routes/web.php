@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\BiographyController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ImageUploadController;
+// use App\Http\Controllers\ImageUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +19,12 @@ use App\Http\Controllers\ImageUploadController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/dashboard');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $posts =\App\Models\Post::orderByDesc('created_at')->get();
+    return view('dashboard',['posts' => $posts]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/profil', function (Request $request) {
@@ -32,40 +33,6 @@ Route::get('/profil', function (Request $request) {
     return view('profil', ['profil' => $posts, 'user'=> $user]);
     // view('profil');
 })->name('profil');
-
-Route::get('/profil/{slug}/{id}', function (string $slug, string $id, Request $request) {
-    return [
-        "slug" => $slug,
-        "id" => $id,
-        "name" => $request->input('name'), // l'objet request peut être ajouter: url[...]/post/1?name=Philip
-    ];
-})->where([ // permet de spécifier des contraintes sur les paramètres (par ex: assigner uniquement des chiffres)
-    'id' => '[0-9]+', // ici on indique que l'on accepte une suite de chiffre pour l'id 
-    'slug'=> '[a-z0-9\-]+', // ici on indique que l'on autorise: char, chiffres & "-"
-]) ;
-
-// Route::get('/add_images', function () {
-//     return view('add_images');
-// });
-
-// Route::get('/view_images', function () {
-//     return view('view_images');
-// });
-
-Route::get('/feed', function () {
-    return view('feed.index');
-});
-
-// Routes pour uploader une image
-//For adding an image
-Route::get('/add_images',[ImageUploadController::class,'addImage'])->name('images.add');
-
-//For storing an image
-Route::post('/store-image',[ImageUploadController::class,'storeImage'])
-->name('images.store');
-
-//For showing an image
-Route::get('/view_images',[ImageUploadController::class,'viewImage'])->name('images.view');
 
 require __DIR__.'/auth.php';
 
