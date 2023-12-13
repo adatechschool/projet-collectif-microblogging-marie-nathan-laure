@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('postimages', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();
-            $table->foreignId('post_id')->constrained()->nullable();
+            $table->foreignId('post_id')->constrained();
         });
     }
 

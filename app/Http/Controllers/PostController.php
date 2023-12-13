@@ -30,6 +30,7 @@ class PostController extends Controller
         $validatedData['user_id'] = auth()->user()->id;
 
         // Crée une nouvelle publication
+        // PostController.php
         $post = Post::create([
             'content' => $validatedData['content'],
             'user_id' => $validatedData['user_id'],
@@ -40,10 +41,12 @@ class PostController extends Controller
             $file = $request->file('image');
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('image'), $filename);
-            print_r($filename);
+
             // Crée une nouvelle entrée dans la table des images associée à la publication
-            $post->image()->create(['image' => $filename]);
+            $postImage = new Postimage(['image' => $filename]);
+            $post->image()->save($postImage);
         }
+
 
         // Redirige vers la liste des publications avec un message de succès
         return redirect('/post')->with('success', 'Publication créée avec succès!');
