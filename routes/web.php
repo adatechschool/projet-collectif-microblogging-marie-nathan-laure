@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\BiographyController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ImageUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,29 @@ Route::get('/profil/{slug}/{id}', function (string $slug, string $id, Request $r
     'slug'=> '[a-z0-9\-]+', // ici on indique que l'on autorise: char, chiffres & "-"
 ]) ;
 
+// Route::get('/add_images', function () {
+//     return view('add_images');
+// });
+
+// Route::get('/view_images', function () {
+//     return view('view_images');
+// });
+
+Route::get('/feed', function () {
+    return view('feed.index');
+});
+
+// Routes pour uploader une image
+//For adding an image
+Route::get('/add_images',[ImageUploadController::class,'addImage'])->name('images.add');
+
+//For storing an image
+Route::post('/store-image',[ImageUploadController::class,'storeImage'])
+->name('images.store');
+
+//For showing an image
+Route::get('/view_images',[ImageUploadController::class,'viewImage'])->name('images.view');
+
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function () {
@@ -55,8 +79,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/post/store', [PostController::class, 'store']);
 });
 
-Route::get('/feed', function () {
-        return view('feed.index');
-});
+
 
 

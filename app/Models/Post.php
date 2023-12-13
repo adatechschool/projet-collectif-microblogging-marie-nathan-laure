@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Post extends Model
 {
@@ -26,4 +27,12 @@ class Post extends Model
    {
        return $this->belongsTo(User::class);
    }
+
+      /**
+    * Relation avec la table Postimage (un post peut avoir une seule image)
+    */
+    public function image(): HasOne
+    {
+        return $this->hasOne(Postimage::class);
+    }
 }
