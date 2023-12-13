@@ -13,16 +13,18 @@
             <ul>
                 @foreach($profil as $post)
                     <li>
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-6">
+                        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 pt-6">
                             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                                 <div class="font-normal p-6 text-gray-900 text-justify dark:text-gray-100">
                                     @if ($post->image)
-                                        <img src="{{ asset('image/' . $post->image->image) }}" alt="Image">
-                                    @endif    <p>{{ $post->content }}</p>
+                                        <img src="{{ asset('image/' . $post->image->image) }}" alt="Image" class="max-w-[250px] h-auto mx-auto">
+                                    @endif
+                                    <p>{{ $post->content }}</p>
                                     <small>Posted on {{ $post->created_at }}</small>
                                 </div>
                             </div>
                         </div>
+                        
                     </li>
                 @endforeach
             </ul>
