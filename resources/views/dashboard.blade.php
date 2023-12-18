@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="pt-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="container mx-auto px-4 py-6">
@@ -21,7 +21,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ url('/post/store') }}" method="post">
+                    <form action="{{ url('/post/store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
@@ -30,7 +30,14 @@
                                 id="content" name="content" rows="4" required>{{ old('content') }}</textarea>
                         </div>
 
-                        <!-- Autres champs du formulaire -->
+                        <div class="mb-4">
+                            <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                <div>
+                                    <label class="btn inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150" for="image"> Ajouter une image</label>
+                                    <input type="file" name="image" id="image" style="visibility:hidden;"class="mt-1 block w-full">
+                                </div>
+                            </label>
+                        </div>
 
                         <x-primary-button>{{ __('Publier') }}</x-primary-button>
                     </form>
@@ -38,4 +45,33 @@
             </div>
         </div>
     </div>
+    <div>
+        @if (count($posts) > 0)
+                <ul>
+                    @foreach($posts as $post)
+                        <li>
+                            <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 pt-6">
+                                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                                    <div class="font-normal p-6 text-gray-900 text-justify dark:text-gray-100">
+                                        @if ($post->image)
+                                            <img src="{{ asset('image/' . $post->image->image) }}" alt="Image" class="max-w-[250px] h-auto mx-auto">
+                                        @endif 
+                                        <p>{{ $post->content }}</p>
+                                        <small>Posted on {{ $post->created_at }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            @else
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-6">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="font-semibold p-6 text-gray-900 dark:text-gray-100">
+                        <p>No posts found.</p>
+                    </div>
+                </div>
+            </div>
+        @endif
+    </div>   
 </x-app-layout>
